@@ -12,5 +12,5 @@
  *
  *= require_tree .
  *= require_self
- *= require 'highlightjs/styles/xt256'
+ *= require 'highlightjs/styles/darcula'
  */
