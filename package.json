@@ -1,5 +1,8 @@
 {
   "name": "rails_terminal_output",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "axios": "^0.16.2",
+    "highlightjs": "^9.10.0"
+  }
 }
