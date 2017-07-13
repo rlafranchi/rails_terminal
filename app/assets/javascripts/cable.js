@@ -9,5 +9,7 @@
   this.App || (this.App = {});
 
   App.cable = ActionCable.createConsumer();
+  App.outputChars = [];
+  App.outputCounter = 0;
 
 }).call(this);

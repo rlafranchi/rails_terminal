@@ -13,7 +13,12 @@ class CommandStreamController < ApplicationController
     else
       cmd = "for ((i=1;i<5;i++)); do echo 'Specify a command...'; sleep 1; done"
     end
-    output = `#{cmd}`
-    render json: {status: $?.exitstatus, output: output}
+    command_handler = CommandHandler.new(cmd)
+    position = 0
+    command_handler.run do |char|
+      ActionCable.server.broadcast "output", {output: char, position: position}
+      position += 1
+    end
+    render json: {status: command_handler.status}
   end
 end
