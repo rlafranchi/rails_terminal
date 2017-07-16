@@ -13,6 +13,15 @@ class CommandHandler
     end
   end
 
+  def run_each_line(&block)
+    status = pty do |r,w,pid|
+      r.each do |line|
+        yield line
+      end
+      Process.wait(pid)
+    end
+  end
+
   private
 
   def pty(&block)
